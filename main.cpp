@@ -7,6 +7,8 @@ using namespace std;
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
+// NDC 标准化坐标
+// OpenGL仅当3D坐标在3个轴（x、y和z）上的值在-1.0到1.0的范围内时才处理
 const float vertices[] = {  // 三个顶点坐标
 	-0.5f, -0.5f, 0.0f,     // z轴分量均为0，表明顶点深度均为0，目的是最终渲染一个2d效果的三角形
 	0.5f,  -0.5f, 0.0f,

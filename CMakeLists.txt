@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 3.12.0)
+project(opengl_proj VERSION 0.1.0 LANGUAGES C CXX)
+
+include(CTest)
+enable_testing()
+add_subdirectory(src)
+# aux_source_directory(. SRCS)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR} "Thirdparty/include")
+link_directories(${CMAKE_CURRENT_SOURCE_DIR} "Thirdparty/lib")
+file(GLOB Assets "./Assets" "./Thirdparty")
+file(COPY ${Assets} DESTINATION ${CMAKE_BINARY_DIR})
+add_executable(opengl_proj main.cpp src/glad.c)
+# add_executable(opengl_test test.cpp)
+target_link_libraries(opengl_proj libglfw.3.dylib)
+
+set(CPACK_PROJECT_NAME ${PROJECT_NAME})
+set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
+include(CPack)
